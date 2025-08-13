@@ -39,7 +39,7 @@
     }
 
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    html, body { height: 100%; transition: background-color .3s ease, color .3s ease; }
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica Neue, sans-serif;
@@ -148,7 +148,7 @@
       </div>
       <ul class="menu">
         <li class="active">🏠 <span class="txt">Dashboard</span></li>
-        <li class="has-sub open">
+        <li class="has-sub">
   <div class="menu-head">🧾 <span class="txt">Orders</span> <span class="caret">▾</span> <span class="badge">12</span></div>
   <ul class="submenu" aria-label="Orders">
     <li>All Orders</li>
@@ -318,8 +318,9 @@
   <script>
     const html = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) html.setAttribute('data-theme', savedTheme);
+    const savedTheme =
+      localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    html.setAttribute('data-theme', savedTheme);
     const setIcon = () => themeToggle.textContent = html.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
     setIcon();
     themeToggle.addEventListener('click', () => {
@@ -359,15 +360,21 @@
       rowCount.textContent = visible + ' order' + (visible === 1 ? '' : 's');
     }
 
+    document.querySelectorAll('.menu .has-sub .menu-head').forEach(head => {
+      head.addEventListener('click', () => {
+        const li = head.closest('.has-sub');
+        li.classList.toggle('open');
+      });
+    });
     submit.addEventListener('click', applyFilters);
     [keyword, assignUser, start, end].forEach(el => el.addEventListener('change', applyFilters));
-    reset.addEventListener('click', () => { keyword.value=''; assignUser.value=''; start.value=''; end.value=''; document.querySelectorAll('.menu .has-sub .menu-head').forEach(head=>{
-  head.addEventListener('click', ()=>{
-    const li = head.closest('.has-sub');
-    li.classList.toggle('open');
-  });
-});
-applyFilters(); });
+    reset.addEventListener('click', () => {
+      keyword.value = '';
+      assignUser.value = '';
+      start.value = '';
+      end.value = '';
+      applyFilters();
+    });
 
     document.getElementById('btnPrint').addEventListener('click', () => window.print());
 
