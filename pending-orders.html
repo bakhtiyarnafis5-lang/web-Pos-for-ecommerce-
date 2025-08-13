@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pending Orders</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { margin: 0; }
+    .btn-add { background: #dc2626; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; }
+    .btn-add span { margin-right: 4px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+    .actions .btn { border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; color: #fff; }
+    .btn-assign { background: #16a34a; }
+    .btn-status { background: #7e22ce; }
+    .btn-delete { background: #b91c1c; }
+    .btn-print { background: #2563eb; }
+    .btn-courier { background: #0ea5e9; }
+    .search-bar { margin-left: auto; display: flex; gap: 4px; }
+    .search-bar input { padding: 6px 8px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f3f4f6; }
+    .actions-row { display: flex; gap: 6px; }
+    .actions-row button { border: none; background: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Pending Order (93)</h1>
+    <button class="btn-add"><span>🛒</span>Add New</button>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-assign">+ Assign User</button>
+    <button class="btn btn-status">+ Change Status</button>
+    <button class="btn btn-delete">+ Delete All</button>
+    <button class="btn btn-print">Print</button>
+    <button class="btn btn-courier">🚚 Steadfast</button>
+    <button class="btn btn-courier">🚚 Pathao</button>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by invoice or name" />
+      <button class="btn btn-print">Search</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th><input type="checkbox" /></th>
+        <th>SL</th>
+        <th>Action</th>
+        <th>Invoice</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Assign</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" /></td>
+        <td>1</td>
+        <td class="actions-row">
+          <button title="View">👁️</button>
+          <button title="Edit">✏️</button>
+          <button title="Delete">🗑️</button>
+        </td>
+        <td>INV-1001</td>
+        <td>2024-05-01 10:00</td>
+        <td>John Doe<br/><small>Dhaka</small></td>
+        <td>01234567890</td>
+        <td></td>
+        <td>৳5000</td>
+        <td>Pending</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
