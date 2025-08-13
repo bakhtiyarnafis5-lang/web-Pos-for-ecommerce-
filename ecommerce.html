@@ -23,6 +23,7 @@
       --success: #37d399;
       --warning: #ffcf5c;
       --border: #1e2a3a;
+      --sidebar-bg: linear-gradient(180deg, #0f172a 0%, #0b1020 100%);
     }
 
     [data-theme="light"] {
@@ -36,6 +37,7 @@
       --success: #16a34a;
       --warning: #d97706;
       --border: #e5e7eb;
+      --sidebar-bg: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -50,7 +52,7 @@
 
     /* Sidebar */
     .sidebar {
-      background: linear-gradient(180deg, #0f172a 0%, #0b1020 100%);
+      background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
       padding: 18px 14px;
       position: sticky; top: 0; height: 100vh;
