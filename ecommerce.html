@@ -431,19 +431,22 @@
       rowCount.textContent = visible + ' order' + (visible === 1 ? '' : 's');
       pageTitle.textContent = 'All Orders (' + visible + ')';
     }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.menu .has-sub .menu-head').forEach(head => {
+        head.addEventListener('click', () => {
+          const parentLi = head.closest('.has-sub');
+          const isOpen = parentLi.classList.contains('open');
 
-    const menu = document.querySelector('.menu');
-    if (menu) {
-      menu.querySelectorAll('.has-sub .menu-head').forEach(head => head.setAttribute('aria-expanded', head.parentElement.classList.contains('open')));
-      menu.addEventListener('click', (e) => {
-        const head = e.target.closest('.menu-head');
-        if (!head) return;
-        const li = head.closest('.has-sub');
-        if (!li) return;
-        li.classList.toggle('open');
-        head.setAttribute('aria-expanded', li.classList.contains('open'));
+          // Close all other open dropdowns
+          document.querySelectorAll('.menu .has-sub').forEach(li => li.classList.remove('open'));
+
+          // Toggle current dropdown
+          if (!isOpen) {
+            parentLi.classList.add('open');
+          }
+        });
       });
-    }
+    });
     searchBtn.addEventListener('click', applyFilters);
     searchInput.addEventListener('input', applyFilters);
 
