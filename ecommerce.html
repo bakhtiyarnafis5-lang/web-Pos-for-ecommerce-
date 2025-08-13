@@ -414,12 +414,15 @@
       pageTitle.textContent = 'All Orders (' + visible + ')';
     }
 
-    document.querySelectorAll('.menu .has-sub .menu-head').forEach(head => {
-      head.addEventListener('click', () => {
+    const menu = document.querySelector('.menu');
+    if (menu) {
+      menu.addEventListener('click', (e) => {
+        const head = e.target.closest('.menu-head');
+        if (!head) return;
         const li = head.closest('.has-sub');
-        li.classList.toggle('open');
+        if (li) li.classList.toggle('open');
       });
-    });
+    }
     searchBtn.addEventListener('click', applyFilters);
     searchInput.addEventListener('input', applyFilters);
 
