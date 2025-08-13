@@ -101,6 +101,10 @@
     .search { display:flex; gap:8px; }
     .search input { padding:8px 12px; border:1px solid var(--border); border-radius:10px; background:var(--card); color:var(--text); }
 
+    .orders-submenu { list-style:none; display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:20px 0; }
+    .orders-submenu a { text-decoration:none; padding:6px 10px; border-radius:6px; color:var(--primary); display:block; }
+    .orders-submenu a.active { background:var(--primary); color:#fff; }
+
     /* Table */
     .table-wrap { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:auto; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
     table { width:100%; border-collapse:collapse; min-width: 980px; }
@@ -153,10 +157,10 @@
       </div>
       <ul class="menu">
         <li class="active">🏠 <span class="txt">Dashboard</span></li>
-        <li class="has-sub">
+        <li class="has-sub open">
   <div class="menu-head">🧾 <span class="txt">Orders</span> <span class="caret">▾</span> <span class="badge">12</span></div>
   <ul class="submenu" aria-label="Orders">
-    <li><a href="ecommerce.html">All Order</a></li>
+    <li class="active"><a href="ecommerce.html">All Order</a></li>
     <li><a href="pending-orders.html">Pending</a></li>
     <li><a href="#">Processing</a></li>
     <li><a href="#">On The Way</a></li>
@@ -252,6 +256,20 @@
           <button id="themeToggle" class="theme-toggle">🌙</button>
         </div>
       </header>
+
+      <nav aria-label="Orders">
+        <ul class="orders-submenu">
+          <li><a href="ecommerce.html" class="active">All Order</a></li>
+          <li><a href="pending-orders.html">Pending</a></li>
+          <li><a href="#">Processing</a></li>
+          <li><a href="#">On The Way</a></li>
+          <li><a href="#">In Courier</a></li>
+          <li><a href="#">Completed</a></li>
+          <li><a href="#">Unpaid</a></li>
+          <li><a href="#">Confirm</a></li>
+          <li><a href="#">Notify</a></li>
+        </ul>
+      </nav>
 
       <div class="action-bar">
         <div class="bulk-actions">
