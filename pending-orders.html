@@ -20,6 +20,9 @@
     .btn-courier { background: #0ea5e9; }
     .search-bar { margin-left: auto; display: flex; gap: 4px; }
     .search-bar input { padding: 6px 8px; }
+    .orders-submenu { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 20px 0; }
+    .orders-submenu a { text-decoration: none; padding: 6px 10px; border-radius: 6px; color: #2563eb; display: block; }
+    .orders-submenu a.active { background: #2563eb; color: #fff; }
     table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
     th { background: #f3f4f6; }
@@ -32,6 +35,20 @@
     <h1>Pending Order (93)</h1>
     <button class="btn-add"><span>🛒</span>Add New</button>
   </div>
+
+  <nav aria-label="Orders">
+    <ul class="orders-submenu">
+      <li><a href="ecommerce.html">All Order</a></li>
+      <li><a href="pending-orders.html" class="active">Pending</a></li>
+      <li><a href="#">Processing</a></li>
+      <li><a href="#">On The Way</a></li>
+      <li><a href="#">In Courier</a></li>
+      <li><a href="#">Completed</a></li>
+      <li><a href="#">Unpaid</a></li>
+      <li><a href="#">Confirm</a></li>
+      <li><a href="#">Notify</a></li>
+    </ul>
+  </nav>
 
   <div class="actions">
     <button class="btn btn-assign">+ Assign User</button>
