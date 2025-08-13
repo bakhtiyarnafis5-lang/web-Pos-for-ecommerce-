@@ -157,7 +157,7 @@
       </div>
       <ul class="menu">
         <li class="active">🏠 <span class="txt">Dashboard</span></li>
-        <li class="has-sub open">
+        <li class="has-sub">
   <div class="menu-head">🧾 <span class="txt">Orders</span> <span class="caret">▾</span> <span class="badge">12</span></div>
   <ul class="submenu" aria-label="Orders">
     <li class="active"><a href="ecommerce.html">All Order</a></li>
@@ -434,11 +434,14 @@
 
     const menu = document.querySelector('.menu');
     if (menu) {
+      menu.querySelectorAll('.has-sub .menu-head').forEach(head => head.setAttribute('aria-expanded', head.parentElement.classList.contains('open')));
       menu.addEventListener('click', (e) => {
         const head = e.target.closest('.menu-head');
         if (!head) return;
         const li = head.closest('.has-sub');
-        if (li) li.classList.toggle('open');
+        if (!li) return;
+        li.classList.toggle('open');
+        head.setAttribute('aria-expanded', li.classList.contains('open'));
       });
     }
     searchBtn.addEventListener('click', applyFilters);
